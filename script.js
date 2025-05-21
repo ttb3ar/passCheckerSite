@@ -1,5 +1,5 @@
 const passwordInput = document.getElementById("password");
-const strengthBar = document.getElementById("strength-bar");
+const strengthFill = document.getElementById("strength-fill");
 const feedback = document.getElementById("feedback");
 const pwnedResult = document.getElementById("pwned-result");
 
@@ -16,11 +16,11 @@ passwordInput.addEventListener("input", async function () {
   const percent = (score / 5) * 100;
   const color = getColor(score);
 
-  strengthBar.style.setProperty("--bar-color", color);
-  strengthBar.querySelector("::after"); // dummy to satisfy :after
-  strengthBar.style.setProperty("width", percent + "%");
+  strengthFill.style.width = percent + "%";
+  strengthFill.style.backgroundColor = color;
 
   feedback.textContent = getFeedback(score);
+
   if (password.length > 0) {
     const count = await checkPwned(password);
     pwnedResult.textContent = count > 0
@@ -45,7 +45,7 @@ langToggle.addEventListener("change", () => {
   langLabel.textContent = isJapanese ? "JP" : "EN";
   title.textContent = isJapanese ? "パスワード強度チェッカー" : "Password Strength Checker";
   passwordInput.placeholder = isJapanese ? "パスワードを入力してください" : "Enter your password";
-  feedback.textContent = ""; // will refresh on next input
+  feedback.textContent = "";
   pwnedResult.textContent = "";
 });
 
@@ -60,7 +60,13 @@ function calculateStrength(password) {
 }
 
 function getColor(score) {
-  const colors = ["#ff4d4d", "#ff944d", "#ffd11a", "#9fdb4d", "#28a745"];
+  const colors = [
+    "var(--danger)",     // very weak
+    "#e67e22",           // weak
+    "var(--warning)",    // fair
+    "#27ae60",           // strong
+    "var(--success)"     // very strong
+  ];
   return colors[Math.max(0, score - 1)];
 }
 
