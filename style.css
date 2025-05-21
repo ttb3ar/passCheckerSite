@@ -7,9 +7,15 @@ body {
   justify-content: center;
 }
 
+[data-theme="dark"] body {
+  background-color: #121212;
+  color: #eee;
+}
+
 .container {
-  width: 100%;
-  max-width: 500px;
+  padding: 3em 1em;
+  max-width: 600px;
+  margin: 80px auto;
 }
 
 input[type="password"] {
@@ -32,7 +38,7 @@ input[type="password"] {
   display: block;
   height: 100%;
   width: 0;
-  background: red;
+  background-color: var(--bar-color, red);
   transition: width 0.3s ease-in-out;
 }
 
