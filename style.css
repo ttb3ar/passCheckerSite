@@ -85,11 +85,9 @@ input[type="password"] {
 
 .footer {
   text-align: center;
-  padding: 20px;
-  background-color: #e8e8e8;
-  color: var(--light-text);
+  padding: 1rem;
+  background-color: var(--form-background);
   margin-top: auto;
-  transition: all 0.3s ease;
 }
 
 [data-theme="dark"] .footer {
@@ -98,14 +96,14 @@ input[type="password"] {
 }
 
 .social-links {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .social-links a {
-  margin: 0 10px;
-  color: inherit;
-  font-size: 24px;
-  transition: color 0.3s;
+  margin: 0 0.5rem;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
   text-decoration: none;
 }
 
@@ -114,8 +112,9 @@ input[type="password"] {
 }
 
 .footer p {
-  margin: 0;
-  font-size: 14px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 /* Responsive Design */
