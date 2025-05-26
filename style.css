@@ -9,12 +9,19 @@
   --success: #2ecc71;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Segoe UI", sans-serif;
   margin: 0;
+  min-height: 100vh;
   background-color: var(--light-bg);
   color: var(--light-text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 [data-theme="dark"] body {
@@ -23,6 +30,7 @@ body {
 }
 
 .container {
+  flex: 1;
   padding: 3em 1em;
   max-width: 600px;
   margin: 100px auto 60px auto;
@@ -31,39 +39,66 @@ body {
 
 input[type="password"] {
   width: 100%;
+  max-width: 400px;
   padding: 12px;
   font-size: 16px;
   margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  background-color: white;
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] input[type="password"] {
+  background-color: #2c3e50;
+  color: var(--dark-text);
+  border-color: #555;
 }
 
 .strength-bar {
   width: 100%;
+  max-width: 400px;
   height: 12px;
-  background-color: #ccc;
+  background-color: #ddd;
   border-radius: 6px;
-  margin-top: 10px;
+  margin: 10px auto;
   overflow: hidden;
+}
+
+[data-theme="dark"] .strength-bar {
+  background-color: #555;
 }
 
 .strength-fill {
   height: 100%;
   width: 0%;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
   background-color: var(--danger);
+  border-radius: 6px;
+}
+
+#feedback, #pwned-result {
+  margin: 10px 0;
+  font-weight: 500;
 }
 
 .footer {
   text-align: center;
   padding: 20px;
-  background-color: #ccc;
-  color: #2c3e50;
+  background-color: #e8e8e8;
+  color: var(--light-text);
+  margin-top: auto;
+  transition: all 0.3s ease;
 }
 
 [data-theme="dark"] .footer {
   background-color: #2c3e50;
-  color: #ecf0f1;
+  color: var(--dark-text);
+}
+
+.social-links {
+  margin-bottom: 10px;
 }
 
 .social-links a {
@@ -71,8 +106,22 @@ input[type="password"] {
   color: inherit;
   font-size: 24px;
   transition: color 0.3s;
+  text-decoration: none;
 }
 
 .social-links a:hover {
   color: var(--primary-accent);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+  .container {
+    margin-top: 80px;
+    padding: 2em 1em;
+  }
 }
