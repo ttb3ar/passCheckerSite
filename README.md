@@ -3,8 +3,8 @@ A simple website to check password strength based on industry best practices.
 https://ttb3ar.github.io/passCheckerSite/ 
   
 **Features include:**  
-Japanese and English languge support with transition effects and indicator  
 Light/Dark theme toggling  
+Japanese and English languge support with transition effects and indicator  
 Responsive password strength indicator bar  
 API intergration with Pwned Passwords to check if a password has been breached  
  -https://api.pwnedpasswords.com
