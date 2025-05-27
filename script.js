@@ -38,6 +38,7 @@ const translations = {
 // Theme handling
 function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
 }
 
 function toggleTheme() {
@@ -52,6 +53,7 @@ function toggleTheme() {
 function setLanguage(language) {
   document.documentElement.setAttribute('data-language', language);
   updateUILanguage(language);
+  localStorage.setItem('language', language);
 }
 
 function toggleLanguage() {
@@ -70,7 +72,8 @@ function toggleLanguage() {
   setTimeout(() => {
     isJapanese = !isJapanese;
     langLabel.textContent = isJapanese ? "JP" : "EN";
-    
+
+    localStorage.setItem('language', newLang);
     updateUILanguage(isJapanese ? 'jp' : 'en');
     showLanguageIndicator(isJapanese ? 'jp' : 'en');
     
