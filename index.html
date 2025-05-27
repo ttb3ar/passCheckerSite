@@ -1,19 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" data-language="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Password Strength Checker</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Password Strength Checker</h1>
-    <input type="password" id="password" placeholder="Enter your password" />
-    <div class="strength-bar" id="strength-bar"></div>
-    <p id="feedback"></p>
-    <p id="pwned-result"></p>
+  <div class="language-switch-wrapper">
+    <label class="language-switch" for="language-checkbox">
+      <input type="checkbox" id="language-checkbox" />
+      <div class="slider lang-slider round">
+        <span class="lang-label">EN</span>
+      </div>
+    </label>
   </div>
+  <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox">
+      <input type="checkbox" id="checkbox" />
+      <div class="slider theme-slider round">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </div>
+    </label>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 id="title">Password Strength Checker</h1>
+      <p id="subtitle">Check the strength and security of your passwords</p>
+    </header>
+
+    <main class="strength-form">
+      <div class="input-group">
+        <label for="password" id="password-label">Enter your password:</label>
+        <input type="password" id="password" placeholder="Enter your password" />
+      </div>
+      
+      <div class="strength-bar" id="strength-bar">
+        <div class="strength-fill" id="strength-fill"></div>
+      </div>
+      
+      <p id="feedback"></p>
+      <p id="pwned-result"></p>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="social-links">
+      <a href="https://github.com/ttb3ar" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/theodore-lin-7b391a299" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+    <p id="footer-text">Created by TTB3AR</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
