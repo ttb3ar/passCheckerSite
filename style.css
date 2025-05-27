@@ -285,10 +285,6 @@ input:checked + .theme-slider {
   font-size: 12px;
   font-weight: bold;
   z-index: 1;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  line-height: 34px;
 }
 
 input:checked + .lang-slider {
