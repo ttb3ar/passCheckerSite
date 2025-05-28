@@ -21,7 +21,8 @@ const translations = {
     feedback: ["Very weak", "Weak", "Fair", "Strong", "Very strong"],
     pwnedWarning: "⚠️ This password has appeared in {count} breaches!",
     pwnedSafe: "✅ This password has not appeared in known breaches.",
-    footer: "Created by TTB3AR"
+    footer: "Created by TTB3AR",
+    apiCredit: "Breach data provided by"
   },
   jp: {
     title: "パスワード強度チェッカー",
@@ -31,7 +32,8 @@ const translations = {
     feedback: ["とても弱い", "弱い", "普通", "強い", "とても強い"],
     pwnedWarning: "⚠️ このパスワードは {count} 件の漏洩で見つかりました。",
     pwnedSafe: "✅ このパスワードは既知の漏洩には見つかりませんでした。",
-    footer: "TTB3AR制作"
+    footer: "TTB3AR制作",
+    apiCredit: "漏洩データ提供："
   }
 };
 
@@ -99,7 +101,7 @@ function setLanguage(language) {
 }
 
 function toggleLanguage() {
-  const contentElements = document.querySelectorAll('#title, #subtitle, #password-label, #feedback, #pwned-result, #footer-text');
+  const contentElements = document.querySelectorAll('#title, #subtitle, #password-label, #feedback, #pwned-result, #footer-text, , #api-credit');
   
   contentElements.forEach(element => {
     element.classList.add('transition-content');
@@ -157,6 +159,7 @@ function updateUILanguage(language) {
   document.getElementById('password-label').textContent = texts.passwordLabel;
   document.getElementById('password').placeholder = texts.placeholder;
   document.getElementById('footer-text').textContent = texts.footer;
+  document.getElementById('api-credit').innerHTML = texts.apiCredit + ' <a href="https://haveibeenpwned.com/Passwords" target="_blank" rel="noopener noreferrer">Have I Been Pwned</a>';
   document.title = texts.title;
 }
 
