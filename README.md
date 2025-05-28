@@ -1,6 +1,6 @@
 # passCheckerSite
 A simple website to check password strength based on industry best practices.
-https://ttb3ar.github.io/passCheckerSite/ 
+https://ttb3ar.github.io/passtrength/  
   
 **Features include:**  
 Light/Dark theme toggling  
