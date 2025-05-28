@@ -35,23 +35,67 @@ const translations = {
   }
 };
 
+// Local Storage Functions
+function saveTheme(theme) {
+  try {
+    localStorage.setItem('passwordChecker_theme', theme);
+  } catch (error) {
+    console.warn('Could not save theme preference:', error);
+  }
+}
+
+function loadTheme() {
+  try {
+    return localStorage.getItem('passwordChecker_theme') || 'light';
+  } catch (error) {
+    console.warn('Could not load theme preference:', error);
+    return 'light';
+  }
+}
+
+function saveLanguage(language) {
+  try {
+    localStorage.setItem('passwordChecker_language', language);
+  } catch (error) {
+    console.warn('Could not save language preference:', error);
+  }
+}
+
+function loadLanguage() {
+  try {
+    return localStorage.getItem('passwordChecker_language') || 'en';
+  } catch (error) {
+    console.warn('Could not load language preference:', error);
+    return 'en';
+  }
+}
+
 // Theme handling
 function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
+  saveTheme(theme);
 }
 
 function toggleTheme() {
-  if (document.documentElement.getAttribute('data-theme') === 'light') {
-    setTheme('dark');
-  } else {
-    setTheme('light');
-  }
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+}
+
+function initializeTheme() {
+  const savedTheme = loadTheme();
+  setTheme(savedTheme);
+  
+  // Update the toggle switch to match the saved theme
+  themeToggle.checked = (savedTheme === 'dark');
 }
 
 // Language handling
 function setLanguage(language) {
   document.documentElement.setAttribute('data-language', language);
+  isJapanese = (language === 'jp');
   updateUILanguage(language);
+  saveLanguage(language);
 }
 
 function toggleLanguage() {
@@ -68,11 +112,12 @@ function toggleLanguage() {
   });
   
   setTimeout(() => {
-    isJapanese = !isJapanese;
+    const newLanguage = isJapanese ? 'en' : 'jp';
+    setLanguage(newLanguage);
+    
     langLabel.textContent = isJapanese ? "JP" : "EN";
     
-    updateUILanguage(isJapanese ? 'jp' : 'en');
-    showLanguageIndicator(isJapanese ? 'jp' : 'en');
+    showLanguageIndicator(newLanguage);
     
     if (passwordInput.value.length > 0) {
       feedback.textContent = getFeedback(currentScore);
@@ -91,6 +136,17 @@ function toggleLanguage() {
       }, 300);
     }, 50);
   }, 300);
+}
+
+function initializeLanguage() {
+  const savedLanguage = loadLanguage();
+  isJapanese = (savedLanguage === 'jp');
+  
+  // Update the toggle switch to match the saved language
+  langToggle.checked = isJapanese;
+  langLabel.textContent = isJapanese ? "JP" : "EN";
+  
+  setLanguage(savedLanguage);
 }
 
 function updateUILanguage(language) {
@@ -204,12 +260,11 @@ async function sha1(str) {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize theme
+  // Initialize saved preferences first
+  initializeTheme();
+  initializeLanguage();
+  
+  // Then set up event listeners
   themeToggle.addEventListener("change", toggleTheme);
-  
-  // Initialize language
   langToggle.addEventListener("change", toggleLanguage);
-  
-  // Set initial state
-  updateUILanguage('en');
 });
