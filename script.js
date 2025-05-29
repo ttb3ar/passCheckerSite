@@ -101,7 +101,7 @@ function setLanguage(language) {
 }
 
 function toggleLanguage() {
-  const contentElements = document.querySelectorAll('#title, #subtitle, #password-label, #feedback, #pwned-result, #footer-text, , #api-credit');
+  const contentElements = document.querySelectorAll('#title, #subtitle, #password-label, #feedback, #pwned-result, #footer-text, #api-credit');
   
   contentElements.forEach(element => {
     element.classList.add('transition-content');
