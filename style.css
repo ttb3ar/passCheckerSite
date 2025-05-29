@@ -103,16 +103,56 @@ header p {
   font-weight: 600;
 }
 
-input[type="password"] {
+.password-input-wrapper {
+  position: relative;
+  display: inline-block;
   width: 100%;
   max-width: 400px;
-  padding: 12px;
+}
+
+input[type="password"], input[type="text"] {
+  width: 100%;
+  padding: 12px 45px 12px 12px;
   font-size: 16px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: var(--input-background);
   color: var(--text-color);
   transition: all 0.3s ease;
+}
+
+input[type="password"]:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+.password-toggle:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+.password-toggle i {
+  font-size: 16px;
 }
 
 .strength-bar {
