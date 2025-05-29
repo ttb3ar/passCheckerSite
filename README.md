@@ -5,7 +5,7 @@ https://ttb3ar.github.io/passtrength/
 **Features include:**  
 Light/Dark theme toggling  
 Japanese and English languge support with transition effects and indicator  
-Saving of last used theme/ languge  
+Saving of last used theme/languge  
 Responsive password strength indicator bar  
 Responsive UI with buttons that react to mouse hovers  
 Hide/Show password in text feild for security against shoulder surfing  
