@@ -180,17 +180,23 @@ function showLanguageIndicator(language) {
   }, 1500);
 }
 
-// Password strength checking
-passwordInput.addEventListener("input", async function () {
-  const password = this.value;
-  currentScore = calculateStrength(password);
-  const percent = (currentScore / 5) * 100;
-  const color = getColor(currentScore);
+function updateStrengthDisplay(password, score) {
+  const percent = score === 0 && password.length === 0 ? 0 : (score / 5) * 100;
+  const color = getColor(score);
 
   strengthFill.style.width = percent + "%";
   strengthFill.style.backgroundColor = color;
 
-  feedback.textContent = getFeedback(currentScore);
+  // Only show feedback if there's input
+  feedback.textContent = password.length > 0 ? getFeedback(score) : '';
+}
+
+// Password strength checking
+passwordInput.addEventListener("input", async function () {
+  const password = this.value;
+  currentScore = calculateStrength(password);
+  
+  updateStrengthDisplay(password, currentScore);
 
   if (password.length > 0) {
     currentPwnedCount = await checkPwned(password);
