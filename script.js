@@ -22,7 +22,7 @@ const translations = {
     pwnedWarning: "⚠️ This password has appeared in {count} breaches!",
     pwnedSafe: "✅ This password has not appeared in known breaches.",
     footer: "Created by TTB3AR",
-    apiCredit: "Breach data provided by" // NEW: Add API credit translation
+    apiCredit: "Breach data provided by"
   },
   jp: {
     title: "パスワード強度チェッカー",
@@ -33,7 +33,7 @@ const translations = {
     pwnedWarning: "⚠️ このパスワードは {count} 件の漏洩で見つかりました。",
     pwnedSafe: "✅ このパスワードは既知の漏洩には見つかりませんでした。",
     footer: "TTB3AR制作",
-    apiCredit: "漏洩データ提供：" // NEW: Add Japanese API credit translation
+    apiCredit: "漏洩データ提供："
   }
 };
 
