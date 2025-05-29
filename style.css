@@ -302,18 +302,6 @@ input:checked + .lang-slider {
 }
 
 [data-theme="dark"] input:checked + .lang-slider {
-  background-color: #e74c3c;
-}
-
-[data-theme="dark"] .theme-slider {
-  background-color: #404040;
-}
-
-[data-theme="dark"][data-language="en"] .lang-slider {
-  background-color: #404040;
-}
-
-[data-theme="dark"][data-language="en"] input:checked + .lang-slider {
   background-color: #404040;
 }
 
