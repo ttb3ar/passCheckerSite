@@ -6,6 +6,8 @@ const themeToggle = document.getElementById("checkbox");
 const langToggle = document.getElementById("language-checkbox");
 const langLabel = document.querySelector(".lang-label");
 const title = document.getElementById("title");
+const togglePasswordBtn = document.getElementById("toggle-password");
+const eyeIcon = document.getElementById("eye-icon");
 
 let isJapanese = false;
 let currentScore = 0;
@@ -22,7 +24,9 @@ const translations = {
     pwnedWarning: "⚠️ This password has appeared in {count} breaches!",
     pwnedSafe: "✅ This password has not appeared in known breaches.",
     footer: "Created by TTB3AR",
-    apiCredit: "Breach data provided by"
+    apiCredit: "Breach data provided by",
+    showPassword: "Show password",
+    hidePassword: "Hide password"
   },
   jp: {
     title: "パスワード強度チェッカー",
@@ -33,7 +37,9 @@ const translations = {
     pwnedWarning: "⚠️ このパスワードは {count} 件の漏洩で見つかりました。",
     pwnedSafe: "✅ このパスワードは既知の漏洩には見つかりませんでした。",
     footer: "TTB3AR制作",
-    apiCredit: "漏洩データ提供："
+    apiCredit: "漏洩データ提供：",
+    showPassword: "パスワードを表示",
+    hidePassword: "パスワードを隠す"
   }
 };
 
@@ -92,11 +98,30 @@ function initializeTheme() {
   themeToggle.checked = (savedTheme === 'dark');
 }
 
+// Password visibility toggle
+function togglePasswordVisibility() {
+  const isPassword = passwordInput.type === 'password';
+  const texts = translations[isJapanese ? 'jp' : 'en'];
+  
+  if (isPassword) {
+    passwordInput.type = 'text';
+    eyeIcon.classList.remove('fa-eye');
+    eyeIcon.classList.add('fa-eye-slash');
+    togglePasswordBtn.setAttribute('aria-label', texts.hidePassword);
+  } else {
+    passwordInput.type = 'password';
+    eyeIcon.classList.remove('fa-eye-slash');
+    eyeIcon.classList.add('fa-eye');
+    togglePasswordBtn.setAttribute('aria-label', texts.showPassword);
+  }
+}
+
 // Language handling
 function setLanguage(language) {
   document.documentElement.setAttribute('data-language', language);
   isJapanese = (language === 'jp');
   updateUILanguage(language);
+  updatePasswordToggleLabel();
   saveLanguage(language);
 }
 
@@ -161,6 +186,12 @@ function updateUILanguage(language) {
   document.getElementById('footer-text').textContent = texts.footer;
   document.getElementById('api-credit').innerHTML = texts.apiCredit + ' <a href="https://haveibeenpwned.com/Passwords" target="_blank" rel="noopener noreferrer">Have I Been Pwned</a>';
   document.title = texts.title;
+}
+
+function updatePasswordToggleLabel() {
+  const texts = translations[isJapanese ? 'jp' : 'en'];
+  const isPasswordVisible = passwordInput.type === 'text';
+  togglePasswordBtn.setAttribute('aria-label', isPasswordVisible ? texts.hidePassword : texts.showPassword);
 }
 
 function showLanguageIndicator(language) {
@@ -276,4 +307,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Then set up event listeners
   themeToggle.addEventListener("change", toggleTheme);
   langToggle.addEventListener("change", toggleLanguage);
+  togglePasswordBtn.addEventListener("click", togglePasswordVisibility);
 });
