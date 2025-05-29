@@ -1,5 +1,5 @@
-# passCheckerSite
-A simple website to check password strength based on industry best practices.  
+# Password Strength Tester
+A website to check password strength based on industry best practices.  
 https://ttb3ar.github.io/passtrength/  
   
 **Features include:**  
