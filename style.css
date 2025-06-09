@@ -395,6 +395,63 @@ input:checked + .theme-slider {
   text-decoration: underline;
 }
 
+/* Homepage Button Styles */
+.home-button-wrapper {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.home-button:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.home-button:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Theme-specific styling */
+[data-theme="light"] .home-button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+[data-theme="light"] .home-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+[data-theme="dark"] .home-button {
+  background-color: var(--secondary-color);
+  color: var(--background-color-dark);
+  border: 1px solid var(--border-color-dark);
+}
+
+[data-theme="dark"] .home-button:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color-dark);
+  border: 1px solid var(--primary-color);
+}
+
 /* Media queries for responsive design */
 @media screen and (max-width: 767px) and (min-width: 481px) {
   .theme-switch-wrapper, .language-switch-wrapper {
@@ -427,6 +484,17 @@ input:checked + .theme-slider {
   
   input:checked + .slider:before {
     transform: translateX(24px);
+  }
+
+    .home-button-wrapper {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .home-button {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 }
 
@@ -469,6 +537,17 @@ input:checked + .theme-slider {
     margin-top: 80px;
     padding: 2em 1em;
   }
+
+  .home-button-wrapper {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .home-button {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-height: 480px) and (orientation: landscape) {
@@ -478,6 +557,10 @@ input:checked + .theme-slider {
   
   .language-switch-wrapper {
     right: 15px;
+  }
+
+  .home-button-wrapper {
+    position: absolute;
   }
 }
 
