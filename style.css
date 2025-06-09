@@ -486,7 +486,7 @@ input:checked + .theme-slider {
     transform: translateX(24px);
   }
 
-    .home-button-wrapper {
+  .home-button-wrapper {
     top: 15px;
     left: 15px;
   }
